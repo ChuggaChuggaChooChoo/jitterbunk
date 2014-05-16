@@ -1,0 +1,11 @@
+<h1>Feed</h1>
+
+<ul>
+    {% for bunk in bunk_list %}
+        <li><a href="{% url "bunk:personalFeed" bunk.bunkFrom.id %}">{{ bunk.bunkFrom }}</a>
+         bunked 
+         <a href="{% url "bunk:personalFeed" bunk.bunkFrom.id %}">{{ bunk.bunkTo }}</a>
+          at {{ bunk.bunkTime }}</li>
+    {% endfor %}
+</ul>
+

@@ -1,0 +1,19 @@
+<h1>Feed for {{user.username}}</h1>
+
+
+
+<ul>
+    {% for bunk in bunk_list %}
+        {% if bunk.bunkFrom == user or bunk.bunkTo == user %}
+            <li><a href="{% url 'bunk:personalFeed' bunk.bunkFrom.id %}">{{ bunk.bunkFrom }}</a>
+             bunked 
+                <a href="{% url 'bunk:personalFeed' bunk.bunkTo.id %}"> {{ bunk.bunkTo }}</a> at {{ bunk.bunkTime }}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+<form action="{% url 'bunk:bunkem' user.id %}" method="post">
+{% csrf_token %}
+<input type="submit" value="Bunk 'em!"/>
+</form>
+
